@@ -1,9 +1,29 @@
-<%= link_to 'Add movie', new_list_bookmark_path(@list) %>
-
-<p>
-<%=  %>
-<% @list.movies.each do |movie| %>
-<%= movie.title %>
-<%= link_to 'Delete', bookmark_path(bookmark), method: :delete %>
+<%= link_to root_path do %>
+  <i class="fas fa-chevron-left" id="back-button"></i>
 <% end %>
-</p>
+
+<div class="page-head">
+  <h1> <%= @list.name %> </h1>
+</div>
+
+<div class="item-body">
+<ul class="">
+<% @list.bookmarks.each do |bookmark| %>
+  <li>
+    <h2>
+      <%= bookmark.movie.title %>
+    </h2>
+    <p class="">
+      <%= bookmark.movie.overview %>
+    </p>
+  </li>
+<%= link_to bookmark_path(bookmark), method: :delete, data: { confirm: 'Are you sure you want to remove this movie?' } do  %>
+  <i class="fas fa-trash" id="delete-button"></i>
+<% end %>
+<% end %>
+</ul>
+
+
+
+<%= link_to 'Add movie', new_list_bookmark_path(@list), class: 'btn btn-primary mt-auto' %>
+</div>

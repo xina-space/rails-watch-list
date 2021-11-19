@@ -1,5 +1,5 @@
 class ListsController < ApplicationController
-   before_action :set_list, only: [:show, :destroy]
+   before_action :set_list, only: [:show]
 
   # GET /restaurants
   def index
@@ -42,7 +42,7 @@ class ListsController < ApplicationController
 
   # DELETE /restaurants/1
   def destroy
-    @bookmark = Bookmark.find(params[:id])
+    # @bookmark = Bookmark.find(params[:id])
     @list.destroy
     # redirect_to restaurants_url, notice: 'Restaurant was successfully destroyed.'
   end

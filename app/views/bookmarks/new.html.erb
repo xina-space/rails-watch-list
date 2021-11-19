@@ -1,5 +1,14 @@
+<%= link_to root_path do %>
+  <i class="fas fa-chevron-left" id="back-button"></i>
+<% end %>
+
+<div class="page-head">
+  <h1>Add new movie</h1>
+  <h3>to the <%= @list.name %> list </h3>
+</div>
+
 <%= simple_form_for [@list, @bookmark] do |f| %>
   <%= f.input :comment %>
   <%= f.association :movie %>
-  <%= f.submit %>
+  <%= f.button :submit, 'Add movie', class: 'btn btn-primary' %>
 <% end %>
