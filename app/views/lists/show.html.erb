@@ -7,23 +7,24 @@
 </div>
 
 <div class="item-body">
-<ul class="">
-<% @list.bookmarks.each do |bookmark| %>
-  <li>
-    <h2>
-      <%= bookmark.movie.title %>
-    </h2>
-    <p class="">
-      <%= bookmark.movie.overview %>
-    </p>
-  </li>
-<%= link_to bookmark_path(bookmark), method: :delete, data: { confirm: 'Are you sure you want to remove this movie?' } do  %>
-  <i class="fas fa-trash" id="delete-button"></i>
-<% end %>
-<% end %>
-</ul>
+  <div class="movie-list">
 
-
+    <ul class="">
+    <% @list.bookmarks.each do |bookmark| %>
+      <li>
+        <h2>
+          <%= bookmark.movie.title %>
+        </h2>
+        <p class="">
+          <%= bookmark.movie.overview %>
+        </p>
+      </li>
+    <%= link_to bookmark_path(bookmark), method: :delete, data: { confirm: 'Are you sure you want to remove this movie?' } do  %>
+      <i class="fas fa-trash" id="delete-button"></i>
+    <% end %>
+    <% end %>
+    </ul>
+  </div>
 
 <%= link_to 'Add movie', new_list_bookmark_path(@list), class: 'btn btn-primary mt-auto' %>
 </div>
