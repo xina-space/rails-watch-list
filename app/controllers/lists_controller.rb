@@ -8,7 +8,11 @@ class ListsController < ApplicationController
 
   # GET /lists/1
   def show
+    @movies = Movie.all
   end
+
+  # def all_movies
+  # end
 
   # GET /lists/new
   def new
@@ -38,6 +42,7 @@ class ListsController < ApplicationController
 
   # DELETE /restaurants/1
   def destroy
+    @bookmark = Bookmark.find(params[:id])
     @list.destroy
     # redirect_to restaurants_url, notice: 'Restaurant was successfully destroyed.'
   end
@@ -49,6 +54,9 @@ class ListsController < ApplicationController
     @list = List.find(params[:id])
   end
 
+  def set_bookmark
+    @bookmark = Bookmark.find(params[:id])
+  end
   # Only allow a list of trusted parameters through.
   def list_params
     params.require(:list).permit(:name)

@@ -1,6 +1,6 @@
 class BookmarksController < ApplicationController
   before_action :find_list, except: :destroy
-  before_action :find_movie, except: :destroy
+  # before_action :find_movie, except: :destroy
 
   def new
     @bookmark = Bookmark.new
@@ -17,9 +17,9 @@ class BookmarksController < ApplicationController
   end
 
   def destroy
-    @bookmark = bookmark.find(params[:id])
+    @bookmark = Bookmark.find(params[:id])
     @bookmark.destroy
-    redirect_to list_path(@bookmark.list)
+    redirect_to list_path(@list.movies)
   end
 
   private
@@ -32,7 +32,11 @@ class BookmarksController < ApplicationController
     @list = List.find(params[:list_id])
   end
 
-  def find_movie
-    @movie = Movie.find(params[:movie_id])
-  end
+  # def find_bookmark
+  #   @bookmark = Bookmark.find(params[:bookmark_id])
+  # end
+
+  # def find_movie
+  #   @movie = Movie.find(params[:movie_id])
+  # end
 end
